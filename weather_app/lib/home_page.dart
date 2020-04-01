@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'data_today.dart';
 import 'data_forecast.dart';
-import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   final String location;
@@ -27,9 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-
     location = widget.location;
-
     super.initState();
     loadWeather();
   }
@@ -83,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 15),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(DateFormat.MMMMd().format(weatherData.date),
+                    child: Text(DateFormat.MMMMd().format(DateTime.now()),
                         style: new TextStyle(color: Colors.white)),
                   ),
                   SizedBox(height: 15),
