@@ -68,7 +68,7 @@ class _WrapperState extends State<Wrapper> {
             Container(
               child: isLoading
                   ? CircularProgressIndicator(
-                      strokeWidth: 2.0,
+                      strokeWidth: 3.0,
                       valueColor: new AlwaysStoppedAnimation(Colors.blueAccent),
                     )
                   : null,

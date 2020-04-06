@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:swipedetector/swipedetector.dart';
 import 'package:weatherapp/weather.dart';
 import 'weather_card.dart';
 import 'package:http/http.dart' as http;
@@ -74,7 +73,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       title: 'Flutter Weather App',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.orange,
       ),
       home: Scaffold(
         backgroundColor: Colors.blue,
