@@ -32,12 +32,13 @@ class _WrapperState extends State<Wrapper> {
         isLoading = false;
       });
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  HomePage(
-                    location: location,
-                  )));
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(
+            location: location,
+          ),
+        ),
+      );
     }
 
     setState(() {
@@ -55,29 +56,29 @@ class _WrapperState extends State<Wrapper> {
         padding: EdgeInsets.all(20),
         child: Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                TextField(
-                  controller: _controller,
-                  decoration: InputDecoration(
-                      helperText: "Enter the location",
-                      border: OutlineInputBorder()),
-                ),
-                Container(
-                  child: isLoading
-                      ? CircularProgressIndicator(
-                    strokeWidth: 2.0,
-                    valueColor: new AlwaysStoppedAnimation(Colors.blueAccent),
-                  )
-                      : null,
-                ),
-                RaisedButton(
-                  child: Text("CHECK"),
-                  onPressed: checkLocation,
-                )
-              ],
-            )),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                  helperText: "Enter the location",
+                  border: OutlineInputBorder()),
+            ),
+            Container(
+              child: isLoading
+                  ? CircularProgressIndicator(
+                      strokeWidth: 2.0,
+                      valueColor: new AlwaysStoppedAnimation(Colors.blueAccent),
+                    )
+                  : null,
+            ),
+            RaisedButton(
+              child: Text("CHECK"),
+              onPressed: checkLocation,
+            )
+          ],
+        )),
       ),
     );
   }

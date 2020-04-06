@@ -9,15 +9,17 @@ class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(weather.main,
-            style: TextStyle(color: Colors.white, fontSize: 24.0)),
-        Text('${(weather.temp - 273.15).round().toString()}°C',
-            style: TextStyle(color: Colors.white, fontSize: 36)),
+        Text(weather.main, style: TextStyle(color: Colors.white, fontSize: 24)),
+        SizedBox(height: 20),
         Image.network('https://openweathermap.org/img/w/${weather.icon}.png'),
-        //Text( DateFormat.yMMMd().format(weather.date), style: new TextStyle(color: Colors.white)),
-        //Text( DateFormat.Hm().format(weather.date), style: new TextStyle(color: Colors.white)),
+        SizedBox(height: 20),
+        Text(
+          '${(weather.temp - 273.15).round().toString()}°C',
+          style: TextStyle(color: Colors.white),
+          textScaleFactor: 5,
+        ),
       ],
     );
   }

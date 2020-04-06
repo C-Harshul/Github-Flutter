@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:swipedetector/swipedetector.dart';
 import 'package:weatherapp/weather.dart';
 import 'weather_card.dart';
 import 'package:http/http.dart' as http;
@@ -36,12 +37,15 @@ class _HomePageState extends State<HomePage> {
       isLoading = true;
     });
 
-
     print(location);
     final weatherResponse = await http.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=a9d7c754be7915021a9c4c79b0da6366');
+        'https://api.openweathermap.org/data/2.5/weather?q=' +
+            location +
+            '&appid=a9d7c754be7915021a9c4c79b0da6366');
     final forecastResponse = await http.get(
-        'https://api.openweathermap.org/data/2.5/forecast?q='+ location +'&appid=a9d7c754be7915021a9c4c79b0da6366');
+        'https://api.openweathermap.org/data/2.5/forecast?q=' +
+            location +
+            '&appid=a9d7c754be7915021a9c4c79b0da6366');
 
     if (weatherResponse.statusCode == 200 &&
         forecastResponse.statusCode == 200) {
@@ -62,6 +66,9 @@ class _HomePageState extends State<HomePage> {
     elevation: 0,
   );
 
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      new GlobalKey<RefreshIndicatorState>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -70,70 +77,88 @@ class _HomePageState extends State<HomePage> {
         primarySwatch: Colors.deepOrange,
       ),
       home: Scaffold(
-          backgroundColor: Colors.blue,
-          appBar: appBar,
-          body: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 15),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(DateFormat.MMMMd().format(DateTime.now()),
-                        style: new TextStyle(color: Colors.white)),
-                  ),
-                  SizedBox(height: 15),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(weatherData.name,
-                        textScaleFactor: 3,
-                        style: new TextStyle(color: Colors.white)),
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: weatherData != null
-                                ? Weather(weather: weatherData)
-                                : null),
-                        Container(
-                          child: isLoading
-                              ? CircularProgressIndicator(
-                                  strokeWidth: 2.0,
-                                  valueColor:
-                                      new AlwaysStoppedAnimation(Colors.white),
-                                )
-                              : IconButton(
-                                  icon: new Icon(Icons.refresh),
-                                  tooltip: 'Refresh',
-                                  onPressed: loadWeather,
-                                  color: Colors.white,
-                                ),
+        backgroundColor: Colors.blue,
+        appBar: appBar,
+        body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 30),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.greenAccent,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Column(
+                    children: <Widget>[
+
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(DateFormat.MMMMd().format(DateTime.now()),
+                              style: new TextStyle(color: Colors.white, fontSize: 24)),
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                              weatherData != null ? weatherData.name : null,
+                              textScaleFactor: 3,
+                              style: new TextStyle(color: Colors.white)),
+                        ),
+                      )
+                    ],
                   ),
-                  Container(
-                    child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        height: 200.0,
-                        child: forecastData != null
-                            ? ListView.builder(
-                                itemCount: 5,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) => WeatherCard(
-                                    weather:
-                                        forecastData.list.elementAt(index * 8)))
-                            : null),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: weatherData != null
+                              ? Weather(weather: weatherData)
+                              : null),
+                      Container(
+                        child: isLoading
+                            ? CircularProgressIndicator(
+                                strokeWidth: 2.0,
+                                valueColor:
+                                    new AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : IconButton(
+                                icon: new Icon(Icons.refresh),
+                                tooltip: 'Refresh',
+                                onPressed: loadWeather,
+                                color: Colors.white,
+                              ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      height: 200.0,
+                      child: forecastData != null
+                          ? ListView.builder(
+                              itemCount: 5,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) => WeatherCard(
+                                  weather:
+                                      forecastData.list.elementAt(index * 8)))
+                          : null),
+                ),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
