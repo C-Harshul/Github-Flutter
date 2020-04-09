@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'data_today.dart';
 
@@ -29,7 +30,8 @@ class Weather extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 '${(weather.temp - 273.15).round().toString()}°',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 textScaleFactor: 11,
               ),
             ),
@@ -38,6 +40,8 @@ class Weather extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(18),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 80),
               Padding(
@@ -46,6 +50,11 @@ class Weather extends StatelessWidget {
                   '${(weather.tempMax - 273.15).round().toString()}°',
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
+              ),
+              SizedBox(
+                child: Container(color: Colors.white.withOpacity(0.5)),
+                height: 1,
+                width: 50,
               ),
               Padding(
                 padding: EdgeInsets.all(10),

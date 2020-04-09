@@ -6,8 +6,11 @@ class WeatherData {
   final String icon;
   final double tempMax;
   final double tempMin;
+  final double feelsLike;
+  final double wind;
+  final int humidity;
 
-  WeatherData({this.date, this.name, this.temp, this.main, this.icon, this.tempMax, this.tempMin});
+  WeatherData({this.date, this.name, this.temp, this.main, this.icon, this.tempMax, this.tempMin, this.feelsLike, this.wind, this.humidity});
 
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(
@@ -19,6 +22,9 @@ class WeatherData {
       icon: json['weather'][0]['icon'],
       tempMax : json['main']['temp_max'].toDouble(),
       tempMin : json['main']['temp_min'].toDouble(),
+      feelsLike: json['main']['feels_like'].toDouble(),
+      wind: json['wind']['speed'],
+      humidity: json['main']['humidity'],
     );
   }
 }

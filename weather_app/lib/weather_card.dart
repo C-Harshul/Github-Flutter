@@ -18,17 +18,14 @@ class WeatherCard extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //Text(weather.name, style: new TextStyle(color: Colors.white)),
               Text(weather.main,
-                  style: new TextStyle(color: Colors.white, fontSize: 24.0)),
+                  style: TextStyle(color: Colors.white, fontSize: 24.0)),
               Text('${(weather.temp -273.15).round().toString()}°C',
-                  style: new TextStyle(color: Colors.white)),
+                  style: TextStyle(color: Colors.white)),
               Image.network(
                   'https://openweathermap.org/img/w/${weather.icon}.png'),
               Text(new DateFormat.MMMd().format(weather.date),
-                  style: new TextStyle(color: Colors.white)),
-//            Text(new DateFormat.Hm().format(weather.date),
-//                style: new TextStyle(color: Colors.white)),
+                  style: TextStyle(color: Colors.white)),
             ],
           ),
       ),

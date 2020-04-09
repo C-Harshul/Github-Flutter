@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:weatherapp/home_page.dart';
 
+import 'info_page.dart';
+
 String location;
 
 Future<String> get _localPath async {
@@ -55,7 +57,6 @@ class _WrapperState extends State<Wrapper> {
         data = value;
         if (data != 'Error') {
           _controller.text = data;
-          print(_controller.text);
           checkLocation();
         }
       });
@@ -84,7 +85,7 @@ class _WrapperState extends State<Wrapper> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(
+          builder: (context) => InfoPage(
             location: location,
           ),
         ),

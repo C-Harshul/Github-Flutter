@@ -73,34 +73,32 @@ class _HomePageState extends State<HomePage> {
         primarySwatch: Colors.orange,
       ),
       home: Scaffold(
-        //backgroundColor: Colors.blue,
-        //appBar: appBar,
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.6, 1],
-              colors: [Colors.indigoAccent, Colors.purple]
-            )
-          ),
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.6, 1],
+                  colors: [Colors.indigoAccent, Colors.purple])),
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Center(
             child: Column(
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(20),
-                  child: Text(weatherData != null ? weatherData.name : widget.location,
+                  child: Text(
+                      weatherData != null ? weatherData.name : widget.location,
                       textScaleFactor: 3,
-                      style: new TextStyle(color: Colors.white)),
+                      style: TextStyle(color: Colors.white)),
                 ),
                 Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(5),
                       child: Text(DateFormat.MMMMd().format(DateTime.now()),
-                          style:
-                              new TextStyle(color: Colors.white, fontSize: 24)),
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(0.87),
+                              fontSize: 24)),
                     ),
                     SizedBox(height: 15),
                   ],
@@ -111,9 +109,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Row(
-                        children: <Widget>[
-
-                        ],
+                        children: <Widget>[],
                       ),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -128,10 +124,10 @@ class _HomePageState extends State<HomePage> {
                             ? CircularProgressIndicator(
                                 strokeWidth: 2.0,
                                 valueColor:
-                                    new AlwaysStoppedAnimation(Colors.white),
+                                    AlwaysStoppedAnimation(Colors.white),
                               )
                             : IconButton(
-                                icon: new Icon(Icons.refresh),
+                                icon: Icon(Icons.refresh),
                                 tooltip: 'Refresh',
                                 onPressed: loadWeather,
                                 color: Colors.white,
