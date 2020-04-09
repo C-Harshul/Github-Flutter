@@ -23,7 +23,7 @@ class Weather extends StatelessWidget {
                 ),
                 SizedBox(width: 20),
                 Text(weather.main,
-                    style: TextStyle(color: Colors.white, fontSize: 45)),
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
               ],
             ),
             Align(

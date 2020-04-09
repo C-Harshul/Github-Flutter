@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
-import 'package:weatherapp/weather.dart';
 import 'data_forecast.dart';
 import 'data_today.dart';
 import 'info_card.dart';
@@ -18,7 +16,8 @@ class InfoPage extends StatefulWidget {
   _InfoPageState createState() => _InfoPageState();
 }
 
-class _InfoPageState extends State<InfoPage> {
+class _InfoPageState extends State<InfoPage>
+    with AutomaticKeepAliveClientMixin<InfoPage> {
   bool isLoading = false;
   WeatherData weatherData;
   ForecastData forecastData;
@@ -37,7 +36,6 @@ class _InfoPageState extends State<InfoPage> {
       isLoading = true;
     });
 
-    print(location);
     final weatherResponse = await http.get(
         'https://api.openweathermap.org/data/2.5/weather?q=' +
             location +
@@ -59,21 +57,24 @@ class _InfoPageState extends State<InfoPage> {
     setState(() {
       isLoading = false;
     });
+
+    print(location);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.6, 1],
-                  colors: [Colors.indigoAccent, Colors.purple])),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
+        body: Center(
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.6, 1],
+                    colors: [Colors.indigoAccent, Colors.purple])),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: 20),
@@ -97,22 +98,73 @@ class _InfoPageState extends State<InfoPage> {
                   ],
                 ),
                 Container(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  padding: EdgeInsets.all(20),
+                  child: Container(
+                      //padding: EdgeInsets.all(8),
+                      height: 100,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
                         children: <Widget>[
-
-                          InfoCard(cardName: "Feels Like",cardValue: weatherData!= null ? ((weatherData.feelsLike) - 273.15).round().toString()  + '°': '',),
-                          InfoCard(cardName: "Wind",cardValue: weatherData != null ? weatherData.wind.round().toString() + " km/h" : 'km/h',),
-                          InfoCard(cardName: "Humidity", cardValue: weatherData != null ?  weatherData.humidity.toString() + "%" : "%")
+                          InfoCard(
+                            cardName: "Feels Like",
+                            cardValue: weatherData != null
+                                ? ((weatherData.feelsLike) - 273.15)
+                                .round()
+                                .toString() +
+                                '°'
+                                : '',
+                          ),
+                          InfoCard(
+                            cardName: "Wind",
+                            cardValue: weatherData != null
+                                ? weatherData.wind.round().toString() +
+                                " km/h"
+                                : 'km/h',
+                          ),
+                          InfoCard(
+                              cardName: "Humidity",
+                              cardValue: weatherData != null
+                                  ? weatherData.humidity.toString() + "%"
+                                  : "%")
                         ],
                       )),
-
+                ),
+//              Container(
+//                  padding: EdgeInsets.all(8.0),
+//                  child: Row(
+//                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                    children: <Widget>[
+//                      InfoCard(
+//                        cardName: "Feels Like",
+//                        cardValue: weatherData != null
+//                            ? ((weatherData.feelsLike) - 273.15)
+//                                    .round()
+//                                    .toString() +
+//                                '°'
+//                            : '',
+//                      ),
+//                      InfoCard(
+//                        cardName: "Wind",
+//                        cardValue: weatherData != null
+//                            ? weatherData.wind.round().toString() + " km/h"
+//                            : 'km/h',
+//                      ),
+//                      InfoCard(
+//                          cardName: "Humidity",
+//                          cardValue: weatherData != null
+//                              ? weatherData.humidity.toString() + "%"
+//                              : "%")
+//                    ],
+//                  )),
               ],
             ),
-
-        ),
+          ),
+        )
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

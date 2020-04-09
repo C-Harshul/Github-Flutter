@@ -85,7 +85,7 @@ class _WrapperState extends State<Wrapper> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => InfoPage(
+          builder: (context) => HomePage(
             location: location,
           ),
         ),
