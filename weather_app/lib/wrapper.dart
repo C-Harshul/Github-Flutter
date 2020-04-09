@@ -1,6 +1,39 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'package:weatherapp/home_page.dart';
+
+String location;
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  print(directory.path);
+  return directory.path;
+}
+
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/data.txt');
+}
+
+Future<File> writeContent() async {
+  final file = await _localFile;
+  if (location != null) {
+    return file.writeAsString('$location');
+  } else
+    return null;
+}
+
+Future<String> readContent() async {
+  try {
+    final file = await _localFile;
+    String contents = await file.readAsString();
+    return contents;
+  } catch (e) {
+    return 'Error';
+  }
+}
 
 class Wrapper extends StatefulWidget {
   @override
@@ -8,9 +41,26 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
+  String data;
+
   bool isLoading = false;
-  String location;
   var _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    writeContent();
+    readContent().then((String value) {
+      setState(() {
+        data = value;
+        if (data != 'Error') {
+          _controller.text = data;
+          print(_controller.text);
+          checkLocation();
+        }
+      });
+    });
+  }
 
   void checkLocation() async {
     setState(() {
@@ -39,6 +89,8 @@ class _WrapperState extends State<Wrapper> {
           ),
         ),
       );
+    } else {
+      print(weatherResponse.statusCode);
     }
 
     setState(() {
@@ -62,7 +114,7 @@ class _WrapperState extends State<Wrapper> {
             TextField(
               controller: _controller,
               decoration: InputDecoration(
-                  helperText: "Enter the location",
+                  labelText: "Enter the location",
                   border: OutlineInputBorder()),
             ),
             Container(
@@ -74,9 +126,11 @@ class _WrapperState extends State<Wrapper> {
                   : null,
             ),
             RaisedButton(
-              child: Text("CHECK"),
-              onPressed: checkLocation,
-            )
+                child: Text("CHECK"),
+                onPressed: () {
+                  writeContent();
+                  checkLocation();
+                }),
           ],
         )),
       ),

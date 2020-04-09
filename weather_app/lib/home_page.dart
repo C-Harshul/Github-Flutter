@@ -65,9 +65,6 @@ class _HomePageState extends State<HomePage> {
     elevation: 0,
   );
 
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -76,53 +73,56 @@ class _HomePageState extends State<HomePage> {
         primarySwatch: Colors.orange,
       ),
       home: Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: appBar,
+        //backgroundColor: Colors.blue,
+        //appBar: appBar,
         body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.6, 1],
+              colors: [Colors.indigoAccent, Colors.purple]
+            )
+          ),
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Center(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 30),
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.greenAccent,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Column(
-                    children: <Widget>[
-
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(DateFormat.MMMMd().format(DateTime.now()),
-                              style: new TextStyle(color: Colors.white, fontSize: 24)),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                              weatherData != null ? weatherData.name : null,
-                              textScaleFactor: 3,
-                              style: new TextStyle(color: Colors.white)),
-                        ),
-                      )
-                    ],
-                  ),
+                  padding: EdgeInsets.all(20),
+                  child: Text(weatherData != null ? weatherData.name : widget.location,
+                      textScaleFactor: 3,
+                      style: new TextStyle(color: Colors.white)),
+                ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(DateFormat.MMMMd().format(DateTime.now()),
+                          style:
+                              new TextStyle(color: Colors.white, fontSize: 24)),
+                    ),
+                    SizedBox(height: 15),
+                  ],
                 ),
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: weatherData != null
-                              ? Weather(weather: weatherData)
-                              : null),
+                      Row(
+                        children: <Widget>[
+
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: weatherData != null
+                                ? Weather(weather: weatherData)
+                                : null),
+                      ),
                       Container(
                         child: isLoading
                             ? CircularProgressIndicator(
