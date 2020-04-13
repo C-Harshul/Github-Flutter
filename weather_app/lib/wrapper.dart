@@ -31,6 +31,7 @@ Future<String> readContent() async {
   try {
     final file = await _localFile;
     String contents = await file.readAsString();
+    print("wrapper" + contents);
     return contents;
   } catch (e) {
     return 'Error';
