@@ -4,37 +4,15 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weatherapp/wrapper.dart';
 import 'data_forecast.dart';
 import 'data_today.dart';
 import 'info_card.dart';
 
-Future<String> get _localPath async {
-  final directory = await getApplicationDocumentsDirectory();
-  print(directory.path);
-  return directory.path;
-}
-
-Future<File> get _localFile async {
-  final path = await _localPath;
-  return File('$path/data.txt');
-}
-
-Future<String> readContent() async {
-  try {
-    final file = await _localFile;
-    String contents = await file.readAsString();
-    print("info page" + contents);
-    return contents;
-  } catch (e) {
-    return 'Error';
-  }
-}
-
-Future deleteContent() async{
-  final file = await _localFile;
-  file.delete(recursive: true);
+removeSharedPreferences() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.remove("location");
 }
 
 class InfoPage extends StatefulWidget {
@@ -162,14 +140,10 @@ class _InfoPageState extends State<InfoPage>
               RaisedButton(
                 child: Text("Reset"),
                 onPressed: () {
-                  readContent();
-                  deleteContent();
-                  readContent();
+                  removeSharedPreferences();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => Wrapper()
-                    ),
+                    MaterialPageRoute(builder: (context) => Wrapper()),
                   );
                 },
               )

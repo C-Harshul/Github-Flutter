@@ -1,42 +1,12 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weatherapp/home_page.dart';
 
-import 'info_page.dart';
 
 String location;
-
-Future<String> get _localPath async {
-  final directory = await getApplicationDocumentsDirectory();
-  print(directory.path);
-  return directory.path;
-}
-
-Future<File> get _localFile async {
-  final path = await _localPath;
-  return File('$path/data.txt');
-}
-
-Future<File> writeContent() async {
-  final file = await _localFile;
-  if (location != null) {
-    return file.writeAsString('$location');
-  } else
-    return null;
-}
-
-Future<String> readContent() async {
-  try {
-    final file = await _localFile;
-    String contents = await file.readAsString();
-    print("wrapper" + contents);
-    return contents;
-  } catch (e) {
-    return 'Error';
-  }
-}
+var _controller = TextEditingController();
+String textContent;
 
 class Wrapper extends StatefulWidget {
   @override
@@ -44,24 +14,13 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
-  String data;
-
   bool isLoading = false;
-  var _controller = TextEditingController();
+  bool checkValue;
 
   @override
   void initState() {
     super.initState();
-    writeContent();
-    readContent().then((String value) {
-      setState(() {
-        data = value;
-        if (data != 'Error') {
-          _controller.text = data;
-          checkLocation();
-        }
-      });
-    });
+    print("initstate");
   }
 
   void checkLocation() async {
@@ -129,8 +88,14 @@ class _WrapperState extends State<Wrapper> {
             ),
             RaisedButton(
                 child: Text("CHECK"),
-                onPressed: () {
-                  writeContent();
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  print(_controller.text);
+                  prefs.setString('location', _controller.text);
+                  String data = prefs.getString('location');
+                  print("onPressed");
+                  print(data);
                   checkLocation();
                 }),
           ],
