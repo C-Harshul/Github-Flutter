@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:notesapp/models/api_response.dart';
 import 'package:notesapp/models/note.dart';
 import 'package:notesapp/models/note_for_listing.dart';
-import 'package:notesapp/models/note_insert.dart';
+import 'package:notesapp/models/note_manipulate.dart';
 import 'package:notesapp/screens/note_list.dart';
 import 'package:http/http.dart' as http;
 

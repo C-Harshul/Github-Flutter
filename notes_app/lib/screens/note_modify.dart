@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:notesapp/models/note.dart';
-import 'package:notesapp/models/note_insert.dart';
+import 'package:notesapp/models/note_manipulate.dart';
 import 'package:notesapp/services/notes_service.dart';
 
 class NoteModify extends StatefulWidget {
