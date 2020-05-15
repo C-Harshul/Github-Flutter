@@ -14,8 +14,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var value = prefs.getString('location');
-  print("main");
   print(value);
   runApp(
       MaterialApp(home: value == null ? Wrapper() : HomePage(location: value)));
 }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+

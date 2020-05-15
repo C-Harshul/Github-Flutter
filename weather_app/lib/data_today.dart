@@ -23,7 +23,7 @@ class WeatherData {
       tempMax : json['main']['temp_max'].toDouble(),
       tempMin : json['main']['temp_min'].toDouble(),
       feelsLike: json['main']['feels_like'].toDouble(),
-      wind: json['wind']['speed'],
+      wind: json['wind']['speed'].toDouble(),
       humidity: json['main']['humidity'],
     );
   }
