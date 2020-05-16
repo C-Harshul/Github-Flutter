@@ -108,10 +108,6 @@
         "source": "C:\\Users\\ishan\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_bg.xml"
     },
     {
-        "merged": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\app\\intermediates\\res\\merged\\debug\\layout_toast_custom.xml.flat",
-        "source": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\fluttertoast\\intermediates\\packaged_res\\debug\\layout\\toast_custom.xml"
-    },
-    {
         "merged": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\ishan\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
     },
@@ -150,9 +146,5 @@
     {
         "merged": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\ishan\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
-    },
-    {
-        "merged": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\app\\intermediates\\res\\merged\\debug\\drawable_toast_bg.xml.flat",
-        "source": "C:\\Users\\ishan\\AndroidStudioProjects\\notes_app\\build\\fluttertoast\\intermediates\\packaged_res\\debug\\drawable\\toast_bg.xml"
     }
 ]

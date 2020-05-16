@@ -7,7 +7,6 @@ INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\mai
 MERGED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from [:path_provider] C:\Users\ishan\AndroidStudioProjects\notes_app\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_macos] C:\Users\ishan\AndroidStudioProjects\notes_app\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:fluttertoast] C:\Users\ishan\AndroidStudioProjects\notes_app\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:connectivity] C:\Users\ishan\AndroidStudioProjects\notes_app\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
 MERGED from [:connectivity_macos] C:\Users\ishan\AndroidStudioProjects\notes_app\build\connectivity_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\Users\ishan\AndroidStudioProjects\notes_app\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -28,7 +27,7 @@ INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\deb
 INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 	package
-		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:2:5-35
+		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:2:5-36
 		INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\debug\AndroidManifest.xml
 	android:versionName
@@ -50,12 +49,12 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\is
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\ishan\.gradle\caches\transforms-2\files-2.1\a528b13ac93e64cafa3d0480e2c93207\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:10:9-33
+		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:10:9-34
 	android:icon
 		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:11:9-43
 	android:name
 		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:9:9-57
-activity#com.example.notesapp.MainActivity
+activity#com.example.notes_app.MainActivity
 ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:12:9-40:20
 	android:launchMode
 		ADDED from C:\Users\ishan\AndroidStudioProjects\notes_app\android\app\src\main\AndroidManifest.xml:14:13-43
@@ -105,8 +104,6 @@ MERGED from [:path_provider] C:\Users\ishan\AndroidStudioProjects\notes_app\buil
 MERGED from [:path_provider] C:\Users\ishan\AndroidStudioProjects\notes_app\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_macos] C:\Users\ishan\AndroidStudioProjects\notes_app\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_macos] C:\Users\ishan\AndroidStudioProjects\notes_app\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] C:\Users\ishan\AndroidStudioProjects\notes_app\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] C:\Users\ishan\AndroidStudioProjects\notes_app\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] C:\Users\ishan\AndroidStudioProjects\notes_app\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] C:\Users\ishan\AndroidStudioProjects\notes_app\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_macos] C:\Users\ishan\AndroidStudioProjects\notes_app\build\connectivity_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
