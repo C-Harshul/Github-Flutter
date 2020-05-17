@@ -116,7 +116,7 @@ class _NoteModifyState extends State<NoteModify> {
                                     ],
                                   )).then((data) {
                             if (result.data) {
-                              Navigator.of(context).pop();
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NoteList()));
                             }
                           });
                         } else {
@@ -201,6 +201,7 @@ class _NoteModifyState extends State<NoteModify> {
                               children: <Widget>[
                                 SizedBox(height: 20),
                                 TextField(
+                                  autofocus: true,
                                   controller: _titleController,
                                   keyboardType: TextInputType.multiline,
                                   maxLines: null,

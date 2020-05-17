@@ -44,8 +44,6 @@ class _NoteListState extends State<NoteList> {
 
   @override
   void initState() {
-    print("init");
-
     setState(() {
       _isLoading = true;
     });
@@ -67,7 +65,6 @@ class _NoteListState extends State<NoteList> {
         });
       }
     });
-
     super.initState();
   }
 
@@ -89,7 +86,16 @@ class _NoteListState extends State<NoteList> {
                         Navigator.of(context)
                             .push(
                                 MaterialPageRoute(builder: (context) => NoteModify(isThereInternet: _isThereInternet)))
-                            .then((_) => fetchNotes());
+                            .then((_) {
+                          setState(() {
+                            _isLoading = true;
+                          });
+                          fetchNotes().then((value) {
+                            setState(() {
+                              _isLoading = false;
+                            });
+                          });
+                        });
                       },
                     ),
                     body: RefreshIndicator(
@@ -110,7 +116,16 @@ class _NoteListState extends State<NoteList> {
                                       return Dismissible(
                                         key: ValueKey(_apiResponse.data[index].noteID),
                                         direction: DismissDirection.startToEnd,
-                                        onDismissed: (direction) {},
+                                        onDismissed: (direction) {
+                                          setState(() {
+                                            _isLoading = true;
+                                          });
+                                          fetchNotes().then((value) {
+                                            setState(() {
+                                              _isLoading = false;
+                                            });
+                                          });
+                                        },
                                         confirmDismiss: (direction) async {
                                           final result =
                                               await showDialog(context: context, builder: (context) => NoteDelete());
@@ -185,9 +200,7 @@ class _NoteListState extends State<NoteList> {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                           print("is there internet" + _isThereInternet.toString());
                           return NoteModify(isThereInternet: _isThereInternet);
-                        })).then((value) {
-
-                        });
+                        })).then((value) {});
                       },
                     ),
                     body: _isLoading == true
