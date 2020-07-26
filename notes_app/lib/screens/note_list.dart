@@ -50,7 +50,8 @@ class _NoteListState extends State<NoteList> {
     _checkInternetConnectivity().then((value) {
       _isThereInternet = value;
       if (_isThereInternet) {
-        fetchNotes().then((value) {
+        fetchNotes().then((fetchedValue) {
+          print("at fetch notes");
           setState(() {
             _isLoading = false;
           });
@@ -134,6 +135,7 @@ class _NoteListState extends State<NoteList> {
                                                 await service.deleteNote(_apiResponse.data[index].noteID);
                                             var message;
                                             if (deleteResult != null && deleteResult.data == true) {
+                                              _databaseHelper.deleteNote(_apiResponse.data[index].noteID);
                                               message = "The note was deleted sucessfully";
                                             } else {
                                               message = deleteResult?.errorMessage ?? "An error occured";

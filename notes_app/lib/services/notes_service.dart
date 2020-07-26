@@ -18,11 +18,16 @@ class NotesService {
     return http.get(APIURL + '/notes', headers: headers).then((data) {
       if (data.statusCode == 200) {
         var jsonData = json.decode(data.body);
+        int onlineLength = jsonData.length;
+        int offlineLength = 0;
+        _databaseHelper.getNoteMapList().then((value) {
+          offlineLength = value.length;
+        });
+        print(offlineLength);
         final notes = <NoteForListing>[];
         for (var item in jsonData) {
           notes.add(NoteForListing.fromJson(item));
           getNote(NoteForListing.fromJson(item).noteID).then((value) {
-            print(value.data.toString());
             _databaseHelper.saveNote(value.data);
           });
         }
