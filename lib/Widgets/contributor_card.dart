@@ -1,11 +1,13 @@
-import 'package:flutter/material.dart';
+//Widget used to show the contributor card. If you are changing this, make sure it fits in with the design scheme of Hacktoberfest.
 
+import 'package:flutter/material.dart';
 
 class ContCard extends StatelessWidget {
   final String userName;
   final String dispImg;
-  final String followers;
-  ContCard({this.followers,this.userName,this.dispImg});
+  final String desc;
+  final String webSite;
+  ContCard({this.desc,this.userName,this.dispImg,this.webSite});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +18,8 @@ class ContCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text('Username: $userName'),
-              Text('Followers : $followers')
+              Text('$desc'),
+              Text('WebSite: $webSite'),
             ],
           ),
           leading: Padding(
