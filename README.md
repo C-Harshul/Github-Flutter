@@ -10,7 +10,8 @@ This app aims to simplify the process of finding repositories on GitHub, view th
 
 ​
 
-Support open source software by participating in [Hacktoberfest](hacktoberfest.digitalocean.com) and get goodies and a free t-shirt! :yellow_heart:
+Support open source software by participating in [Hacktoberfest](https://hacktoberfest.digitalocean.com) and get goodies and a free t-shirt! :yellow_heart:
+
 
 ​
 
