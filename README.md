@@ -82,4 +82,4 @@ To start contributing, check out [CONTRIBUTING.md](https://github.com/C-Harshul/
 
 ---
 
-This project is licensed under [MIT](https://github.com/IEEE-VIT/Github-Flutter/blob/master/LICENSE)
+This project is licensed under [MIT](https://github.com/C-Harshul/Github-Flutter/blob/master/LICENSE)
