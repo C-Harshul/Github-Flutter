@@ -1,4 +1,4 @@
-//Widget used to show the contributor card. If you are changing this, make sure it fits in with the design scheme of Hacktoberfest.
+//Widget used to show the contributor card. If you are changing this, make sure the updated design fits in with the design scheme of Hacktoberfest.
 
 import 'package:flutter/material.dart';
 
