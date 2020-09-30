@@ -37,6 +37,13 @@ class Contributors extends StatelessWidget {
   }
 }
 
+getContributors(){
+  //Called when the page opens first
+  //Get the list of Contributors using the GitHub API.
+  //Append the contributor details to the cardList
+}
+
+
 addToContributors(){
  // Trigger an alert box or something similar
  // Ask the user to enter the details
